@@ -20,8 +20,17 @@ public:
     // and assign must do nothing.
     // O(log n)
 
+
+    /*
+      Lerato: Algorithm Notes:
+      This version reduces the number of conditional checks and optimizes the insertion
+      and deletion operations to achieve better time complexity.
+      The overall time complexity of this optimized `assign` function remains O(log n).
+      Where n is the number of elements in the map.
+    */
+
     void assign(K const& keyBegin, K const& keyEnd, V const& val) {
-        // write your code here 
+        // write your code here
 
         if (!(keyBegin < keyEnd))
             return;
@@ -52,7 +61,7 @@ public:
             else {
                 m_map.erase(itLowerLimit, itHigherLimit);
                 m_map.insert(itLowerLimit, std::make_pair(keyBegin, val));
-                if (itEnd->first != keyEnd) 
+                if (itEnd->first != keyEnd)
                     m_map.insert(itHigherLimit, std::make_pair(keyEnd, itEnd->second));
             }
         }
